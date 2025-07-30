@@ -1,4 +1,5 @@
-'use client'
+'use client';
+
 import {
   UserGroupIcon,
   HomeIcon,
@@ -7,10 +8,21 @@ import {
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
-// ...
- 
+
+// Map of links to display in the side navigation.
+const links = [
+  { name: 'Home', href: '/dashboard', icon: HomeIcon },
+  {
+    name: 'Invoices',
+    href: '/dashboard/invoices',
+    icon: DocumentDuplicateIcon,
+  },
+  { name: 'Customers', href: '/dashboard/customers', icon: UserGroupIcon },
+];
+
 export default function NavLinks() {
   const pathname = usePathname();
+  
   return (
     <>
       {links.map((link) => {
@@ -26,7 +38,7 @@ export default function NavLinks() {
               },
             )}
           >
-            <LinkIcon className="w-6" />
+            <LinkIcon className="w-6 h-6" />
             <p className="hidden md:block">{link.name}</p>
           </Link>
         );
